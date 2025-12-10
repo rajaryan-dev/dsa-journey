@@ -23,3 +23,7 @@ The repository is organized by topic, with descriptive filenames for easier navi
 - Master core data structures.
 - Improve problem-solving skills.
 - Prepare for technical interviews.
+
+## Naming Convention
+
+All files in this repository follow the snake_case naming convention (e.g., insertion_sort.cpp, prime_count.cpp) for consistency and readability.
