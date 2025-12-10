@@ -14,7 +14,7 @@ int main() {
   int* ptr = &a;        // Pointer to int
   int** parPtr = &ptr;  // Pointer to pointer (stores address of ptr)
 
-  cout << "Value of a            : " << a << endl;
+      cout << "Value of a            : " << a << endl;
   cout << "Address of a (&a)     : " << &a << endl;
   cout << "Address stored in ptr : " << ptr << endl;
   cout << "Value at *ptr         : " << *ptr << endl;
