@@ -1,6 +1,6 @@
 #include <iostream>
-#include <map>     // Required for storing horizontal distance mappings
-#include <queue>   // Required for Level Order Traversal (BFS)
+#include <map>    // Required for storing horizontal distance mappings
+#include <queue>  // Required for Level Order Traversal (BFS)
 #include <vector>
 using namespace std;
 
@@ -43,7 +43,8 @@ class Node {
 // Time Complexity: O(N) where N is the number of nodes
 // Space Complexity: O(H) where H is the height (recursion stack)
 
-static int idx = -1;  // Static variable to track current index in the preorder vector
+static int idx =
+    -1;  // Static variable to track current index in the preorder vector
 
 Node* buildTree(const vector<int>& preorder) {
   idx++;  // Move to the next element in the sequence
@@ -76,7 +77,8 @@ Node* buildTree(const vector<int>& preorder) {
 //    a. Pop a Node from the front
 //    b. If the Node is NULL:
 //       - We have finished traversing a level. Print a newline
-//       - If the Queue is still not empty, push another NULL to mark end of next level
+//       - If the Queue is still not empty, push another NULL to mark end of
+//       next level
 //    c. If the Node is NOT NULL:
 //       - Print its data
 //       - If it has a Left Child, push it to the Queue
@@ -122,7 +124,8 @@ void levelOrder(Node* root) {
 // TOP VIEW OF A BINARY TREE
 // ======================================================================================
 // The Top View of a binary tree is the set of nodes visible when the tree is
-// viewed from the top. We see only the topmost node at each horizontal distance.
+// viewed from the top. We see only the topmost node at each horizontal
+// distance.
 //
 // CONCEPT: Horizontal Distance (HD)
 // - Root node has HD = 0
@@ -161,11 +164,11 @@ void topView(Node* root) {
 
   // Queue stores pairs of [Node, Horizontal_Distance]
   queue<pair<Node*, int>> q;
-  
+
   // Map stores [Horizontal_Distance -> Node's data value]
   // Using map (not unordered_map) to maintain sorted order of HD
   map<int, int> m;
-  
+
   // Start with root at horizontal distance 0
   q.emplace(root, 0);  // emplace() creates the pair in-place (more efficient)
 
@@ -203,7 +206,8 @@ void topView(Node* root) {
 // BOTTOM VIEW OF A BINARY TREE
 // ======================================================================================
 // The Bottom View of a binary tree is the set of nodes visible when the tree is
-// viewed from the bottom. We see only the bottommost node at each horizontal distance.
+// viewed from the bottom. We see only the bottommost node at each horizontal
+// distance.
 //
 // CONCEPT: Similar to Top View, but we keep UPDATING the map
 // - Instead of storing only the first node at each HD, we store the LAST node
@@ -241,10 +245,10 @@ void bottomView(Node* root) {
 
   // Queue stores pairs of [Node, Horizontal_Distance]
   queue<pair<Node*, int>> q;
-  
+
   // Map stores [Horizontal_Distance -> Node's data value]
   map<int, int> m;
-  
+
   // Start with root at horizontal distance 0
   q.emplace(root, 0);
 
@@ -254,8 +258,8 @@ void bottomView(Node* root) {
     int currHD = q.front().second;
     q.pop();
 
-    // ALWAYS update the map at this HD (this ensures we keep the bottommost node)
-    // Unlike top view, we don't check if HD exists - we overwrite it
+    // ALWAYS update the map at this HD (this ensures we keep the bottommost
+    // node) Unlike top view, we don't check if HD exists - we overwrite it
     m[currHD] = curr->data;
 
     // Add left child with HD-1
@@ -322,6 +326,19 @@ void kthLevel(Node* root, int K) {
   kthLevel(root->right, K - 1);
 }
 
+// Transform to Sum Tree
+int sumTree(Node* root) {
+  if (root == NULL) {
+    return 0;
+  }
+
+  int leftSumTree = sumTree(root->left);
+  int rightSumTree = sumTree(root->right);
+
+  root->data = leftSumTree + rightSumTree + root->data;
+  return root->data;
+}
+
 // ======================================================================================
 // MAIN FUNCTION
 // ======================================================================================
@@ -349,7 +366,7 @@ int main() {
   //     - -1: No right child of 5
 
   vector<int> preorder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
-  
+
   cout << "Building Binary Tree from Preorder Sequence..." << endl;
   Node* root = buildTree(preorder);
 
@@ -387,7 +404,7 @@ int main() {
   cout << "\n========================================" << endl;
   cout << "KTH LEVEL NODES:" << endl;
   cout << "========================================" << endl;
-  
+
   int level = 1;
   cout << "Nodes at Level " << level << ": ";
   kthLevel(root, level);
@@ -404,6 +421,10 @@ int main() {
   cout << "(Expected: 4 5)" << endl;
 
   cout << "\n========================================" << endl;
+
+  // Test Sum Tree
+
+  cout << "Sum Tree: " << sumTree(root) << endl;
 
   return 0;
 }
