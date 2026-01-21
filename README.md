@@ -6,17 +6,17 @@ This repository contains my personal journey learning Data Structures and Algori
 
 The repository is organized by topic, with descriptive filenames for easier navigation:
 
-- **binary-search**: Binary search algorithms (e.g., `binary_search_basic.cpp`).
-- **linked-list**: Implementations of Singly, Doubly, and Circular linked lists.
-- **maths-dsa**: Mathematical algorithms (e.g., Prime Count, Armstrong Number).
-- **oops**: Object-Oriented Programming concepts (Encapsulation, Polymorphism, Constructors, etc.).
-- **pointers**: Pointer concepts (Double Pointers, Pointer Arithmetic).
-- **recursion**: Recursive solutions (Subsets, Sorted Array Check).
-- **sorting**: Sorting algorithms (Merge Sort, Next Permutation, Sort Colors).
-- **stack**: Stack implementations using Vector and List, plus STL Stack usage.
-- **stl**: Standard Template Library (Vector, List, Deque, Pair, Stack, Queue, Sets, Maps, etc.).
-- **strings**: String manipulation (Palindrome, Permutations).
-- **queue**: Queue implementations (Deque, FIFO).
+- **BINARY-SEARCH**: Binary search algorithms (e.g., `binary_search_basic.cpp`).
+- **BINARY-TREE**: Binary tree implementations and problems (e.g., Height, Views).
+- **LINKED-LIST**: Implementations of Singly, Doubly, and Circular linked lists.
+- **MATHS**: Mathematical algorithms (e.g., Prime Count, Armstrong Number).
+- **OOPs**: Object-Oriented Programming concepts (Encapsulation, Polymorphism, Constructors, etc.).
+- **POINTERS**: Pointer concepts (Double Pointers, Pointer Arithmetic).
+- **QUEUE**: Queue implementations (Deque, FIFO).
+- **RECURSION**: Recursive solutions (Subsets, Sorted Array Check, Merge Sort, Quick Sort).
+- **STACK**: Stack implementations using Vector and List, plus STL Stack usage.
+- **STL_C++**: Standard Template Library (Vector, List, Deque, Pair, Stack, Queue, Sets, Maps, Sort, etc.).
+- **STRING**: String manipulation (Palindrome, Permutations).
 
 ## Goals
 
