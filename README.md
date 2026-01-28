@@ -7,6 +7,7 @@ This repository contains my personal journey learning Data Structures and Algori
 The repository is organized by topic, with descriptive filenames for easier navigation:
 
 - **BINARY-SEARCH**: Binary search algorithms (e.g., `binary_search_basic.cpp`).
+- **BINARY-SEARCH-TREE**: Binary Search Tree operations (Deletion, Merging, Validation).
 - **BINARY-TREE**: Binary tree implementations and problems (e.g., Height, Views).
 - **LINKED-LIST**: Implementations of Singly, Doubly, and Circular linked lists.
 - **MATHS**: Mathematical algorithms (e.g., Prime Count, Armstrong Number).
@@ -16,7 +17,7 @@ The repository is organized by topic, with descriptive filenames for easier navi
 - **RECURSION**: Recursive solutions (Subsets, Sorted Array Check, Merge Sort, Quick Sort).
 - **STACK**: Stack implementations using Vector and List, plus STL Stack usage.
 - **STL_C++**: Standard Template Library (Vector, List, Deque, Pair, Stack, Queue, Sets, Maps, Sort, etc.).
-- **STRING**: String manipulation (Palindrome, Permutations).
+- **STRING**: String manipulation (Basics, Length, Palindrome, Permutations, Custom Class).
 
 ## Goals
 
