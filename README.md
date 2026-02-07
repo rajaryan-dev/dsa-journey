@@ -6,6 +6,7 @@ This repository contains my personal journey learning Data Structures and Algori
 
 The repository is organized by topic, with descriptive filenames for easier navigation:
 
+- **ARRAYS**: Array data structure (Basics, Insertion, Deletion, Searching, Sorting, Rotation, 2D Arrays).
 - **BINARY-SEARCH**: Binary search algorithms (e.g., `binary_search_basic.cpp`).
 - **BINARY-SEARCH-TREE**: Binary Search Tree operations (Deletion, Merging, Validation).
 - **BINARY-TREE**: Binary tree implementations and problems (e.g., Height, Views).
