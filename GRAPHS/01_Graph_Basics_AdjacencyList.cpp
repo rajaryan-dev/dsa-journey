@@ -27,10 +27,10 @@ TYPES OF GRAPHS:
 ----------------
 1. UNDIRECTED GRAPH: Edges have no direction (friendship - mutual relationship)
    Example: If A-B exists, then B-A also exists
-   
-2. DIRECTED GRAPH (Digraph): Edges have direction (follower - one-way relationship)
-   Example: A→B doesn't mean B→A
-   
+
+2. DIRECTED GRAPH (Digraph): Edges have direction (follower - one-way
+relationship) Example: A→B doesn't mean B→A
+
 3. WEIGHTED GRAPH: Edges have weights/costs (distance between cities)
 4. UNWEIGHTED GRAPH: All edges are equal (our current implementation)
 
@@ -65,15 +65,15 @@ CURRENT IMPLEMENTATION:
 
 class Graph {
   // MEMBER VARIABLES
-  int V;              // Number of vertices in the graph
-  list<int>* l;       // Pointer to array of adjacency lists
-                      // l[i] contains list of all vertices adjacent to vertex i
-                      
+  int V;         // Number of vertices in the graph
+  list<int>* l;  // Pointer to array of adjacency lists
+                 // l[i] contains list of all vertices adjacent to vertex i
+
   /*
   VISUALIZATION OF ADJACENCY LIST:
   --------------------------------
   For a graph with 5 vertices (0-4):
-  
+
   l[0] → [1] → NULL           (vertex 0 connected to vertex 1)
   l[1] → [0] → [2] → [3]      (vertex 1 connected to 0, 2, 3)
   l[2] → [1] → [3] → [4]      (vertex 2 connected to 1, 3, 4)
@@ -84,17 +84,17 @@ class Graph {
  public:
   // CONSTRUCTOR: Initialize the graph with V vertices
   Graph(int V) {
-    this->V = V;                    // Store number of vertices
-    l = new list<int>[V];           // Create array of V empty lists
-                                    // Each list will store neighbors of that vertex
-    
+    this->V = V;           // Store number of vertices
+    l = new list<int>[V];  // Create array of V empty lists
+                           // Each list will store neighbors of that vertex
+
     /*
     MEMORY ALLOCATION:
     ------------------
     new list<int>[V] creates an array of V list objects on the heap
     Similar to: int* arr = new int[V];
     But instead of integers, we're creating an array of list containers
-    
+
     WHY DYNAMIC ALLOCATION?
     - Graph size may not be known at compile time
     - Allows flexibility in creating graphs of any size
@@ -109,28 +109,28 @@ class Graph {
     -----------
     u: Source vertex
     v: Destination vertex
-    
+
     UNDIRECTED GRAPH LOGIC:
     -----------------------
     For an undirected graph, if u-v edge exists, then v-u also exists
     So we add v to u's list AND u to v's list
-    
+
     Example: addEdge(0, 1)
     Before:  l[0] → []    l[1] → []
     After:   l[0] → [1]   l[1] → [0]
-    
+
     TIME COMPLEXITY: O(1) - constant time insertion at end of list
     */
-    
-    l[u].push_back(v);              // Add v to u's adjacency list
-    l[v].push_back(u);              // Add u to v's adjacency list (undirected)
-    
+
+    l[u].push_back(v);  // Add v to u's adjacency list
+    l[v].push_back(u);  // Add u to v's adjacency list (undirected)
+
     /*
     NOTE FOR DIRECTED GRAPH:
     ------------------------
     If this were a directed graph (u → v), we would only do:
     l[u].push_back(v);
-    
+
     This would create an edge FROM u TO v, but not vice versa
     */
   }
@@ -142,11 +142,11 @@ class Graph {
     --------
     Visualize the graph by showing each vertex and its neighbors
     Helps verify graph construction and understand connectivity
-    
+
     OUTPUT FORMAT:
     --------------
     vertex : neighbor1 neighbor2 neighbor3 ...
-    
+
     Example Output:
     0 : 1
     1 : 0 2 3
@@ -154,25 +154,25 @@ class Graph {
     3 : 1 2
     4 : 2
     */
-    
+
     // Iterate through all vertices
     for (int i = 0; i < V; i++) {
-      cout << i << " : ";           // Print current vertex
-      
+      cout << i << " : ";  // Print current vertex
+
       // Iterate through all neighbors of vertex i
       // Range-based for loop: for each neighbor in l[i]
       for (int neigh : l[i]) {
-        cout << neigh << " ";       // Print each neighbor
+        cout << neigh << " ";  // Print each neighbor
       }
-      cout << endl;                 // New line after each vertex
+      cout << endl;  // New line after each vertex
     }
-    
+
     /*
     TIME COMPLEXITY: O(V + E)
     - We visit each vertex once: O(V)
     - We print each edge once: O(E)
     - Total: O(V + E)
-    
+
     SPACE COMPLEXITY: O(1)
     - No extra space used (just printing)
     */
@@ -184,35 +184,35 @@ int main() {
   EXAMPLE GRAPH CONSTRUCTION:
   ----------------------------
   We'll create a graph with 5 vertices (0, 1, 2, 3, 4)
-  
+
   Visual Representation:
-  
+
       0 ---- 1 ---- 2
-             |      |\ 
+             |      |\
              |      | \
              3 -----+  4
-  
+
   Edges:
   0-1, 1-2, 1-3, 2-3, 2-4
-  
+
   This creates a connected graph with one cycle (1-2-3-1)
   */
-  
+
   // Step 1: Create a graph with 5 vertices
   Graph g(5);
-  
+
   // Step 2: Add edges to build the graph structure
-  g.addEdge(0, 1);    // Connect vertex 0 and 1
-  g.addEdge(1, 2);    // Connect vertex 1 and 2
-  g.addEdge(1, 3);    // Connect vertex 1 and 3
-  g.addEdge(2, 3);    // Connect vertex 2 and 3 (creates a cycle: 1-2-3-1)
-  g.addEdge(2, 4);    // Connect vertex 2 and 4
-  
+  g.addEdge(0, 1);  // Connect vertex 0 and 1
+  g.addEdge(1, 2);  // Connect vertex 1 and 2
+  g.addEdge(1, 3);  // Connect vertex 1 and 3
+  g.addEdge(2, 3);  // Connect vertex 2 and 3 (creates a cycle: 1-2-3-1)
+  g.addEdge(2, 4);  // Connect vertex 2 and 4
+
   // Step 3: Display the adjacency list representation
   cout << "Adjacency List Representation of the Graph:\n";
   cout << "-------------------------------------------\n";
   g.printAdjList();
-  
+
   /*
   EXPECTED OUTPUT:
   ----------------
@@ -221,7 +221,7 @@ int main() {
   2 : 1 3 4
   3 : 1 2
   4 : 2
-  
+
   INTERPRETATION:
   ---------------
   • Vertex 0 is connected to: 1
@@ -229,7 +229,7 @@ int main() {
   • Vertex 2 is connected to: 1, 3, 4 (degree = 3)
   • Vertex 3 is connected to: 1, 2 (degree = 2)
   • Vertex 4 is connected to: 2 (degree = 1)
-  
+
   GRAPH PROPERTIES:
   -----------------
   • Total Vertices (V): 5
@@ -249,40 +249,9 @@ int main() {
 
 BASIC OPERATIONS (Implemented above):
 --------------------------------------
-1. Create Graph: O(V) - Initialize V empty lists
-2. Add Edge: O(1) - Add to adjacency list
-3. Print Graph: O(V + E) - Visit all vertices and edges
-
-ADVANCED OPERATIONS (To be implemented in other files):
---------------------------------------------------------
-1. BFS (Breadth-First Search): O(V + E)
-   - Level-order traversal
-   - Shortest path in unweighted graph
-   - Uses Queue
-
-2. DFS (Depth-First Search): O(V + E)
-   - Explore as far as possible before backtracking
-   - Cycle detection, topological sort
-   - Uses Stack/Recursion
-
-3. Shortest Path Algorithms:
-   - Dijkstra's Algorithm: O((V + E) log V) - weighted graphs
-   - Bellman-Ford: O(VE) - handles negative weights
-   - Floyd-Warshall: O(V³) - all pairs shortest path
-
-4. Minimum Spanning Tree:
-   - Prim's Algorithm: O((V + E) log V)
-   - Kruskal's Algorithm: O(E log E)
-
-5. Cycle Detection:
-   - Undirected: DFS with parent tracking - O(V + E)
-   - Directed: DFS with color marking - O(V + E)
-
-6. Topological Sort: O(V + E) - for DAG (Directed Acyclic Graph)
-
-7. Connected Components: O(V + E) - using DFS/BFS
-
-8. Strongly Connected Components: O(V + E) - Kosaraju's/Tarjan's
+1. Create Graph: O(V)
+2. Add Edge: O(1)
+3. Print Graph: O(V + E)
 
 REAL-WORLD APPLICATIONS:
 ------------------------
@@ -305,14 +274,8 @@ Find all neighbors | O(degree(u))   | O(V)
 Add Vertex         | O(1)           | O(V²)
 
 NEXT STEPS IN LEARNING:
-------------------------
-1. Implement BFS traversal
-2. Implement DFS traversal
-3. Find shortest path (BFS for unweighted)
-4. Detect cycles
-5. Check if graph is connected
-6. Implement weighted graph
-7. Implement directed graph
+-----------------------
+Check 02_Graph_BFS.cpp and 03_Graph_DFS.cpp for traversals.
 
 ╚══════════════════════════════════════════════════════════════════════════════╝
 */
