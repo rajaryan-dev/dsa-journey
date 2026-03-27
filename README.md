@@ -10,7 +10,7 @@ The repository is organized by topic, with descriptive filenames for easier navi
 - **BINARY-SEARCH**: Binary search algorithms (e.g., `binary_search_basic.cpp`).
 - **BINARY-SEARCH-TREE**: Binary Search Tree operations (Deletion, Merging, Validation).
 - **BINARY-TREE**: Binary tree implementations and problems (e.g., Height, Views).
-- **GRAPHS**: Graph Basics, Traversals (BFS, DFS), Cycle Detection (Undirected & Directed), Topological Sort (DFS & Kahn's BFS), Dijkstra's Algorithm.
+- **GRAPHS**: Graph Basics, Traversals (BFS, DFS), Cycle Detection (Undirected & Directed), Topological Sort (DFS & Kahn's BFS), Dijkstra's Algorithm, Bellman-Ford, Prim's Algorithm.
 - **LINKED-LIST**: Implementations of Singly, Doubly, and Circular linked lists.
 - **MATHS**: Mathematical algorithms (e.g., Prime Count, Armstrong Number).
 - **OOPs**: Object-Oriented Programming concepts (Encapsulation, Polymorphism, Constructors, etc.).
