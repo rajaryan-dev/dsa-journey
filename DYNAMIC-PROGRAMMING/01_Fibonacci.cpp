@@ -1,4 +1,5 @@
-// Fibonacci using Top-Down DP (Memoization), Bottom-Up DP (Tabulation) & Space Optimization
+// Fibonacci using Top-Down DP (Memoization), Bottom-Up DP (Tabulation) & Space
+// Optimization
 
 #include <iostream>
 #include <vector>
@@ -37,8 +38,8 @@ int fibTabulation(int n) {
 int fibOptimized(int n) {
   if (n <= 1) return n;
 
-  int prev2 = 0; // fib(i-2)
-  int prev1 = 1; // fib(i-1)
+  int prev2 = 0;  // fib(i-2)
+  int prev1 = 1;  // fib(i-1)
 
   for (int i = 2; i <= n; i++) {
     int curr = prev1 + prev2;
@@ -50,17 +51,19 @@ int fibOptimized(int n) {
 }
 
 int main() {
-  int n = 6;
+  int n;
+  cout << "Enter No: ";
+  cin >> n;
 
   // Top-Down approach
   vector<int> dp(n + 1, -1);
-  cout << "Top-Down : " << fib(n, dp) << endl;    // Output: 8
+  cout << "Top-Down : " << fib(n, dp) << endl;  // Output: 8
 
   // Bottom-Up approach
-  cout << "Bottom-Up: " << fibTabulation(n) << endl; // Output: 8
+  cout << "Bottom-Up: " << fibTabulation(n) << endl;  // Output: 8
 
   // Space Optimized approach
-  cout << "Optimized: " << fibOptimized(n) << endl;   // Output: 8
+  cout << "Optimized: " << fibOptimized(n) << endl;  // Output: 8
 
   return 0;
 }
