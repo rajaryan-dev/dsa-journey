@@ -35,3 +35,7 @@
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Custom ignores
+tmp/
+output/

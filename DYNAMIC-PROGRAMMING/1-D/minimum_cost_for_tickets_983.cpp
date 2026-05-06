@@ -148,7 +148,7 @@ class Solution {
   }
   // Space-Optimized:
 
-  int minimumCoins(int n, vector<int>& days, vector<int>& cost) {
+  int Optimized(int n, vector<int>& days, vector<int>& cost) {
     int ans = 0;
 
     // Each queue stores {travel_day, cumulative_cost_if_pass_bought_then}
