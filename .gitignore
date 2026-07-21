@@ -39,3 +39,11 @@ Thumbs.db
 # Custom ignores
 tmp/
 output/
+
+# Notes
+.txt
+Notes.txt
+
+# Testing
+test.cpp
+
