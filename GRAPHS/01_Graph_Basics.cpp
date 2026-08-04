@@ -19,6 +19,9 @@ class Graph {
     adj[v].push_back(u);  // remove this line for directed graph
   }
 
+  // Destructor: free dynamically allocated adjacency list
+  ~Graph() { delete[] adj; }
+
   void print() {
     for (int i = 0; i < V; i++) {
       cout << i << " -> ";

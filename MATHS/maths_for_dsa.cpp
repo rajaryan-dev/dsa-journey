@@ -12,12 +12,8 @@ string isPrime(int n) {
 }
 
 int main() {
-    
+
     int n = 7;
     cout << isPrime(n) << endl;
-    return 0;
-
-  
-    
     return 0;
 }

@@ -41,5 +41,6 @@ int main() {
   vector<int> dscArr = arr;
   quickSort(dscArr, 0, dscArr.size() - 1, true);
   for (int x : dscArr) cout << x << " ";
+  cout << endl;
   return 0;
 }

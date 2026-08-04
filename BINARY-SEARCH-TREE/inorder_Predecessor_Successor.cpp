@@ -57,7 +57,11 @@ vector<int> getPredSucc(Node* root, int key) {
       break;
     }
   }
-  return {pred->val, succ->val};
+  // Guard against nullptr: pred is null if key is the min node,
+  // succ is null if key is the max node
+  int predVal = pred ? pred->val : -1;
+  int succVal = succ ? succ->val : -1;
+  return {predVal, succVal};
 };
 
 int main() {

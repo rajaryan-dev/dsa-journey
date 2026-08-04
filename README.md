@@ -6,21 +6,25 @@ This repository contains my personal journey learning Data Structures and Algori
 
 The repository is organized by topic, with descriptive filenames for easier navigation:
 
-- **ARRAYS**: Array data structure (Basics, Insertion, Deletion, Searching, Sorting, Rotation, 2D Arrays).
-- **BINARY-SEARCH**: Binary search algorithms (e.g., `binary_search_basic.cpp`).
-- **BINARY-SEARCH-TREE**: Binary Search Tree operations (Deletion, Merging, Validation).
-- **BINARY-TREE**: Binary tree implementations and problems (e.g., Height, Views).
-- **DYNAMIC-PROGRAMMING**: Dynamic programming solutions organized by dimensions (1-D, 2-D).
-- **GRAPHS**: Graph Basics, Traversals (BFS, DFS), Cycle Detection (Undirected & Directed), Topological Sort (DFS & Kahn's BFS), Dijkstra's Algorithm, Bellman-Ford, Prim's Algorithm.
-- **LINKED-LIST**: Implementations of Singly, Doubly, and Circular linked lists.
-- **MATHS**: Mathematical algorithms (e.g., Prime Count, Armstrong Number).
-- **OOPs**: Object-Oriented Programming concepts (Encapsulation, Polymorphism, Constructors, etc.).
-- **POINTERS**: Pointer concepts (Double Pointers, Pointer Arithmetic).
-- **QUEUE**: Queue implementations (Deque, FIFO).
-- **RECURSION**: Recursive solutions (Subsets, Sorted Array Check, Merge Sort, Quick Sort).
-- **STACK**: Stack implementations using Vector and List, plus STL Stack usage.
-- **STL_C++**: Standard Template Library (Vector, List, Deque, Pair, Stack, Queue, Sets, Maps, Sort, etc.).
-- **STRING**: String manipulation (Basics, Length, Palindrome, Permutations, Custom Class).
+- **ARRAYS**: Array data structure — Basics, Insertion, Deletion, Searching, Sorting, Rotation, 2D Arrays, Classic Problems.
+- **BINARY-SEARCH**: Binary search algorithms — Iterative (`binary_search_basic.cpp`) and Recursive (`recursion.cpp`).
+- **BINARY-SEARCH-TREE**: BST operations — Insert, Search, Delete, Inorder Predecessor/Successor, Merge Two BSTs.
+- **BINARY-TREE**: Binary tree implementations — Traversals (Pre/In/Post/Level Order), Height, Count, Sum, Top/Bottom Views, Kth Level, Sum Tree.
+- **DYNAMIC-PROGRAMMING**:
+  - *1-D*: Fibonacci, Coin Change, House Robber, Maximize Cuts, Min Cost Tickets, Derangement of Balls.
+  - *2-D*: (in progress)
+  - *Root*: Maximal Rectangle (LC 85 — work in progress).
+- **GRAPHS**: Graph Basics, BFS/DFS Traversal, Cycle Detection (Undirected & Directed), Topological Sort (DFS & Kahn's BFS), Dijkstra's Algorithm, Bellman-Ford, Prim's Algorithm.
+- **LEETCODE-GRIND**: Curated LeetCode problems organized by topic (Arrays and more).
+- **LINKED-LIST**: Singly, Doubly, and Circular linked list implementations and exercises.
+- **MATHS**: Mathematical algorithms — Prime Check, Prime Count (Sieve), Armstrong Number, Print/Count/Sum Digits, Number Conversion (Decimal ↔ Binary).
+- **OOPs**: Object-Oriented Programming — Encapsulation, Inheritance (Single/Multi/Multilevel/Hierarchical/Hybrid), Polymorphism, Constructors, Destructors, Deep vs Shallow Copy, `this` keyword, Abstraction.
+- **POINTERS**: Pointer concepts — Array vs Pointer, Double Pointers, Pointer Arithmetic, Pass by Reference vs Value.
+- **QUEUE**: Queue implementations — FIFO, Circular Queue, Deque.
+- **RECURSION**: Recursive solutions — Basics Demo, Is Sorted, Merge Sort, Quick Sort, Count Inversions, Subsets, Unique Subsets, Combination Sum, Palindrome Partition, N-Queens, Rat in a Maze, Sudoku Solver, Knight Tour.
+- **STACK**: Stack using Vector, Stack using Linked List, STL Stack; Problems: Valid Parentheses, Next Greater Element (I, II), Previous/Next Element, Stock Span, Largest Rectangle in Histogram, Baseball Score, Trapping Rain Water (LC 42), Celebrity Problem, Remove Adjacent Duplicates, Min Stack.
+- **STL_C++**: Standard Template Library — Vector, List, Deque, Pair, Stack, Queue, Priority Queue, Map, MultiMap, Unordered Map, Set, MultiSet, Unordered Set, Algorithms.
+- **STRING**: String manipulation — Basics, Length, Palindrome Check, Permutation in String, Custom String Class.
 
 ## Goals
 

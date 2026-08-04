@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
  int countPrimes(int n) {
@@ -18,6 +19,6 @@ using namespace std;
     }
 
     int main() {
-
+        cout << "Count of primes below 10: " << countPrimes(10) << endl;  // Expected: 4
         return 0;
     }

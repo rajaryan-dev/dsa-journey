@@ -3,7 +3,7 @@
 using namespace std;
 
 // check if array is sorted
-bool isSorted(vector<int> arr, int n) {
+bool isSorted(const vector<int>& arr, int n) {
   if (n == 0 || n == 1) {
     return true;
   }
@@ -12,7 +12,7 @@ bool isSorted(vector<int> arr, int n) {
 }
 
 // bin-search
-int binSearch(vector<int> arr, int tar, int st, int end) {
+int binSearch(const vector<int>& arr, int tar, int st, int end) {
   if (st <= end) {
     int mid = st + (end - st) / 2;
     if (arr[mid] == tar) {

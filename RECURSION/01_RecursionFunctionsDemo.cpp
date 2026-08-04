@@ -46,10 +46,10 @@ int fib(int n) {
    Optimized → store results to avoid recomputation
 -----------------------------------------------------*/
 vector<int> dp(1000, -1);  // Memo array (supports n ≤ 999)
-int fib(int n) {
+int fibMemo(int n) {
   if (n == 0 || n == 1) return n;  // Base case
   if (dp[n] != -1) return dp[n];   // Use stored result
-  return dp[n] = fib(n - 1) + fib(n - 2);
+  return dp[n] = fibMemo(n - 1) + fibMemo(n - 2);
 }
 
 /* ----------------------------------------------------
@@ -78,8 +78,11 @@ int main() {
   // 3️⃣ Sum of Natural Numbers
   cout << "Sum of first 5 numbers: " << calSum(5) << "\n";
 
-  // 4️⃣ Fibonacci
-  cout << "Fibonacci of 8: " << fib(8) << "\n";
+  // 4️⃣ Fibonacci (plain recursion)
+  cout << "Fibonacci of 8 (plain recursion): " << fib(8) << "\n";
+
+  // 4b️⃣ Fibonacci (memoized O(n))
+  cout << "Fibonacci of 8 (memoized):         " << fibMemo(8) << "\n";
 
   // 5️⃣ Check Sorted
   vector<int> arr = {1, 2, 3, 6, 9};
