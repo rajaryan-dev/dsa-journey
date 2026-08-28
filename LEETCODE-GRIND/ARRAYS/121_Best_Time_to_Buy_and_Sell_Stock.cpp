@@ -21,14 +21,20 @@ using namespace std;
 
 // ---------------------------------------------------------------------------
 // Approach 1: Brute Force -> O(n^2) time, O(1) space
-// Idea: try every (buy day, sell day) pair where sell day > buy day,
-//       track the max profit seen.
+//
+// Beginner intuition: try EVERY possible pair of (buy day, sell day)
+// where sell day comes after buy day. For each pair, calculate the
+// profit and keep track of the biggest one seen so far.
+//
+// Note: outer loop runs to n-1 (not n) because when i = n-1 (last day),
+// there's no day left after it to sell on — the inner loop would never
+// execute anyway, so we skip that wasted iteration.
 // ---------------------------------------------------------------------------
 int maxProfitBrute(vector<int>& prices) {
   int n = prices.size();
   int maxProfit = 0;
 
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n - 1; i++) {
     for (int j = i + 1; j < n; j++) {
       int profit = prices[j] - prices[i];
       maxProfit = max(maxProfit, profit);
@@ -40,24 +46,33 @@ int maxProfitBrute(vector<int>& prices) {
 
 // ---------------------------------------------------------------------------
 // Approach 2: Single Pass (Optimal) -> O(n) time, O(1) space
-// Idea: track the minimum price seen SO FAR while scanning left to right.
-//       At each day, the best possible profit if selling TODAY is
-//       (today's price - minPriceSoFar). Track the max of these.
 //
-//       Why it works: for any sell day j, the best buy day is always
-//       the minimum price among all days before j — no need to check
-//       every pair, just carry the running minimum forward.
+// Beginner intuition: imagine you're watching stock prices day by day.
+//   - If today's price is LOWER than the cheapest you've seen so far,
+//     that becomes your new "best day to buy" (update minPrice).
+//   - Otherwise, today could be a good day to SELL — check if selling
+//     today (using the cheapest buy price so far) beats your best
+//     profit found until now.
+//
+// Why we don't check profit on the same day we update minPrice:
+//   If today IS the new minimum, selling today would mean
+//   profit = today's price - today's price = 0, which can never
+//   improve our answer. So there's no need to check it that day.
 // ---------------------------------------------------------------------------
 int maxProfitOptimal(vector<int>& prices) {
-  int minPrice = INT_MAX;
-  int maxProfit = 0;
+  int n = prices.size();
+  int profit = 0;
+  int minPrice = prices[0];
 
-  for (int price : prices) {
-    minPrice = min(minPrice, price);               // cheapest buy so far
-    maxProfit = max(maxProfit, price - minPrice);  // best profit if sold today
+  for (int i = 1; i < n; i++) {
+    if (prices[i] < minPrice) {
+      minPrice = prices[i];
+    } else {
+      profit = max(profit, prices[i] - minPrice);
+    }
   }
 
-  return maxProfit;
+  return profit;
 }
 
 // ---------------------------------------------------------------------------
