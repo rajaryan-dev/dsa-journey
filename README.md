@@ -31,3 +31,7 @@ The repository is organized by topic, with descriptive filenames for easier navi
 - Master core data structures.
 - Improve problem-solving skills.
 - Prepare for technical interviews.
+
+## Progress Tracker
+
+Open [`dsa-prep-tracker.html`](dsa-prep-tracker.html) in a browser to track topic mastery, solved problems, and your daily preparation streak. The tracker is self-contained and saves its data locally in your browser.

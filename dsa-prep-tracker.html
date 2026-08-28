@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DSA Prep Tracker</title>
+  <style>
+    :root { --ink:#18212f; --muted:#687386; --paper:#f7f8fc; --card:#fff; --primary:#5b5ce2; --mint:#31b68a; --amber:#f1a33b; --line:#e9ebf2; }
+    * { box-sizing:border-box; } body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--paper); color:var(--ink); }
+    header { background:linear-gradient(120deg,#282a67,#5b5ce2); color:#fff; padding:34px max(24px,calc((100% - 1120px)/2)); }
+    header p { margin:6px 0 0; color:#dfe2ff; } h1 { margin:0; font-size:clamp(1.8rem,4vw,2.65rem); } main { max-width:1120px; margin:28px auto 52px; padding:0 24px; }
+    .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; } .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; box-shadow:0 3px 12px #30366108; }
+    .stat-label { color:var(--muted); font-size:.85rem; } .stat-value { font-size:2rem; font-weight:750; margin-top:5px; } .wide { grid-column:span 2; }
+    .progress-wrap { margin-top:11px; background:#e8eaf5; height:10px; border-radius:99px; overflow:hidden; } .progress { height:100%; background:linear-gradient(90deg,var(--mint),#6ad5a7); border-radius:inherit; transition:width .25s; }
+    section { margin-top:26px; } h2 { font-size:1.15rem; margin:0 0 13px; } .toolbar { display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:13px; }
+    .filters { display:flex; gap:8px; flex-wrap:wrap; } button, select, input { font:inherit; } button { border:0; border-radius:9px; padding:9px 13px; background:#eff0ff; color:#3b3d93; cursor:pointer; font-weight:650; } button:hover { filter:brightness(.96); } button.active, .primary { background:var(--primary); color:#fff; }
+    .topic-list { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; } .topic { display:flex; align-items:center; gap:13px; min-height:72px; } .topic input { width:20px; height:20px; accent-color:var(--primary); cursor:pointer; } .topic-name { font-weight:700; } .topic-meta { font-size:.82rem; color:var(--muted); margin-top:3px; } .badge { margin-left:auto; border-radius:99px; padding:5px 9px; font-size:.72rem; font-weight:700; background:#fff4df; color:#a6680c; } .done .badge { background:#e1f8ef; color:#16825f; }
+    form { display:grid; grid-template-columns:1.4fr .9fr .8fr auto; gap:10px; } input, select { border:1px solid #dce0eb; border-radius:9px; padding:10px; background:#fff; color:var(--ink); }
+    .problem-list { margin:0; padding:0; list-style:none; } .problem { display:flex; align-items:center; gap:11px; padding:13px 0; border-bottom:1px solid var(--line); } .problem:last-child { border:0; } .problem label { flex:1; } .problem small { display:block; color:var(--muted); margin-top:3px; } .difficulty { border-radius:99px; padding:4px 8px; font-size:.72rem; font-weight:700; } .easy { background:#e2f8f0; color:#118263; } .medium { background:#fff2d9; color:#ad710e; } .hard { background:#ffe4e7; color:#c54353; } .delete { background:transparent; color:#a1a8b4; padding:5px; font-size:1.1rem; }
+    .empty { color:var(--muted); text-align:center; padding:24px; } .footer { color:var(--muted); font-size:.82rem; margin-top:20px; }
+    @media(max-width:760px) { .grid{grid-template-columns:repeat(2,1fr)} .wide{grid-column:span 2}.topic-list{grid-template-columns:1fr} form{grid-template-columns:1fr 1fr} form input:first-child{grid-column:span 2} form button{grid-column:span 2} }
+    @media(max-width:420px) { .grid{grid-template-columns:1fr}.wide{grid-column:span 1} }
+  </style>
+</head>
+<body>
+  <header><h1>DSA Prep Tracker</h1><p>Build consistency, track mastery, and make interview prep visible.</p></header>
+  <main>
+    <div class="grid">
+      <article class="card"><div class="stat-label">Topics mastered</div><div class="stat-value" id="mastered">0 / 15</div></article>
+      <article class="card"><div class="stat-label">Problems solved</div><div class="stat-value" id="solved">0</div></article>
+      <article class="card"><div class="stat-label">Current streak</div><div class="stat-value" id="streak">0 days</div></article>
+      <article class="card wide"><div class="stat-label">Overall preparation</div><div class="stat-value" id="percentage">0%</div><div class="progress-wrap"><div class="progress" id="progress"></div></div></article>
+    </div>
+
+    <section>
+      <div class="toolbar"><h2>Topic roadmap</h2><div class="filters"><button class="active" data-filter="all">All</button><button data-filter="todo">To do</button><button data-filter="done">Mastered</button></div></div>
+      <div class="topic-list" id="topics"></div>
+    </section>
+
+    <section class="card">
+      <h2>Problem log</h2>
+      <form id="problem-form">
+        <input id="problem-name" required maxlength="80" placeholder="Problem name (e.g. Two Sum)">
+        <select id="problem-topic"></select>
+        <select id="problem-difficulty"><option>Easy</option><option selected>Medium</option><option>Hard</option></select>
+        <button class="primary" type="submit">Add problem</button>
+      </form>
+      <ul class="problem-list" id="problems"></ul>
+      <div class="empty" id="empty">No problems logged yet. Add today’s first solve above.</div>
+    </section>
+    <p class="footer">Your progress stays in this browser. Use this page alongside the repository’s topic folders.</p>
+  </main>
+  <script>
+    const roadmap = [
+      ['Arrays','Foundations'], ['Strings','Foundations'], ['Linked List','Data structures'], ['Stack','Data structures'], ['Queue','Data structures'],
+      ['Recursion & Backtracking','Algorithms'], ['Binary Search','Algorithms'], ['Trees','Data structures'], ['Binary Search Tree','Data structures'],
+      ['Graphs','Algorithms'], ['Dynamic Programming','Algorithms'], ['Greedy','Algorithms'], ['Heap & Priority Queue','Data structures'], ['Hashing','Techniques'], ['Sliding Window & Two Pointers','Techniques']
+    ];
+    const key = 'dsa-prep-tracker-v1';
+    let state = JSON.parse(localStorage.getItem(key) || '{"topics":{},"problems":[],"lastActive":null,"streak":0}');
+    const save = () => localStorage.setItem(key, JSON.stringify(state));
+    const day = new Date().toISOString().slice(0,10);
+    function markActive() {
+      if (state.lastActive === day) return;
+      const yesterday = new Date(Date.now()-864e5).toISOString().slice(0,10);
+      state.streak = state.lastActive === yesterday ? state.streak + 1 : 1;
+      state.lastActive = day; save();
+    }
+    function render(filter='all') {
+      const complete = roadmap.filter(([name]) => state.topics[name]).length;
+      const solved = state.problems.length;
+      document.querySelector('#mastered').textContent = `${complete} / ${roadmap.length}`;
+      document.querySelector('#solved').textContent = solved;
+      document.querySelector('#streak').textContent = `${state.streak || 0} day${state.streak === 1 ? '' : 's'}`;
+      const pct = Math.round((complete / roadmap.length) * 100); document.querySelector('#percentage').textContent = pct + '%'; document.querySelector('#progress').style.width = pct + '%';
+      document.querySelector('#topics').innerHTML = roadmap.filter(([n]) => filter==='all' || (filter==='done' ? state.topics[n] : !state.topics[n])).map(([name, group]) => `
+        <label class="card topic ${state.topics[name] ? 'done' : ''}"><input type="checkbox" data-topic="${name}" ${state.topics[name]?'checked':''}><span><span class="topic-name">${name}</span><span class="topic-meta">${group}</span></span><span class="badge">${state.topics[name]?'Mastered':'In progress'}</span></label>`).join('') || '<p class="empty">No topics in this view.</p>';
+      document.querySelector('#problems').innerHTML = state.problems.map(p => `<li class="problem"><input type="checkbox" ${p.done?'checked':''} data-problem="${p.id}"><label><strong>${escapeHtml(p.name)}</strong><small>${p.topic} · ${p.date}</small></label><span class="difficulty ${p.difficulty.toLowerCase()}">${p.difficulty}</span><button class="delete" data-delete="${p.id}" aria-label="Delete ${escapeHtml(p.name)}">×</button></li>`).join('');
+      document.querySelector('#empty').hidden = solved > 0;
+    }
+    const escapeHtml = s => s.replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    document.querySelector('#problem-topic').innerHTML = roadmap.map(([n]) => `<option>${n}</option>`).join('');
+    document.addEventListener('change', e => { if(e.target.dataset.topic){ state.topics[e.target.dataset.topic]=e.target.checked; markActive(); save(); render(document.querySelector('.filters .active').dataset.filter); } if(e.target.dataset.problem){ const p=state.problems.find(x=>x.id===e.target.dataset.problem); p.done=e.target.checked; markActive(); save(); render(); } });
+    document.addEventListener('click', e => { if(e.target.dataset.filter){ document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b===e.target)); render(e.target.dataset.filter); } if(e.target.dataset.delete){ state.problems=state.problems.filter(p=>p.id!==e.target.dataset.delete); save(); render(); } });
+    document.querySelector('#problem-form').addEventListener('submit', e => { e.preventDefault(); const name=document.querySelector('#problem-name'); state.problems.unshift({id:crypto.randomUUID(),name:name.value.trim(),topic:document.querySelector('#problem-topic').value,difficulty:document.querySelector('#problem-difficulty').value,date:day,done:true}); name.value=''; markActive(); save(); render(); });
+    render();
+  </script>
+</body>
+</html>
