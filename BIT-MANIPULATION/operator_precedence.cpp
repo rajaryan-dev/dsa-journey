@@ -34,7 +34,8 @@
  * 
  *  3. Logical AND (&&) happens BEFORE Logical OR (||).
  * 
- *  Golden Rule: When in doubt, just use parentheses `()`. 
+ *  Golden Rule: If we want to override the precedence rules, 
+ *  then use parentheses `()`. When in doubt, just use parentheses `()`. 
  *  It makes your code safe and readable!
  * ============================================================
  */
