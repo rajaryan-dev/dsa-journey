@@ -38,9 +38,9 @@ The repository is organized by topic, with descriptive filenames for easier navi
 
 ## Goals
 
-- Master core data structures.
-- Improve problem-solving skills.
-- Prepare for technical interviews.
+- **Develop algorithmic intuition**: Enhance pattern recognition and logical deduction to solve complex problems efficiently.
+- **Master structural foundations**: Deepen understanding of core data structures and their time-space tradeoffs.
+- **Build cognitive endurance**: Sharpen analytical thinking to excel in high-pressure technical interviews and real-world engineering.
 
 ## Progress Tracker
 
