@@ -8,6 +8,7 @@ The repository is organized by topic, with descriptive filenames for easier navi
 
 - **ARRAYS**: Array data structure — Basics, Insertion, Deletion, Searching, Sorting, Rotation, 2D Arrays, Classic Problems.
 - **BACKTRACKING**: Subsets I/II, Permutations I/II, Combination Sum I/II, Word Search, Palindrome Partitioning, Letter Combinations.
+- **BASICS**: Fundamental C++ concepts — Variable Scope & Shadowing, Type Casting (`static_cast`, etc.), and Lambda Functions.
 - **BINARY-SEARCH**: Binary search algorithms — Iterative, Recursive, Binary Search on Answer Space, Rotated Sorted Array, Peak Element.
 - **BINARY-SEARCH-TREE**: BST operations — Insert, Search, Delete, Inorder Predecessor/Successor, Merge Two BSTs, Advanced BST (Floor/Ceil, Kth Element, LCA, Validate).
 - **BINARY-TREE**: Binary tree implementations — Traversals, Height, Count, Sum, Top/Bottom Views, Paths, LCA, Construction, Flatten, Morris Traversal.
