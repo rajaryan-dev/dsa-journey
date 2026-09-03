@@ -11,7 +11,7 @@ The repository is organized by topic, with descriptive filenames for easier navi
 - **BINARY-SEARCH**: Binary search algorithms — Iterative, Recursive, Binary Search on Answer Space, Rotated Sorted Array, Peak Element.
 - **BINARY-SEARCH-TREE**: BST operations — Insert, Search, Delete, Inorder Predecessor/Successor, Merge Two BSTs, Advanced BST (Floor/Ceil, Kth Element, LCA, Validate).
 - **BINARY-TREE**: Binary tree implementations — Traversals, Height, Count, Sum, Top/Bottom Views, Paths, LCA, Construction, Flatten, Morris Traversal.
-- **BIT-MANIPULATION**: Complete reference on &, |, ^, ~, <<, >> and advanced bitwise tricks.
+- **BIT-MANIPULATION**: Complete reference on &, |, ^, ~, <<, >>, advanced bitwise tricks, and **operator precedence**.
 - **DYNAMIC-PROGRAMMING**:
   - _1-D_: Fibonacci, Coin Change, House Robber, Maximize Cuts, Min Cost Tickets, Derangement of Balls, Longest Increasing Subsequence (LIS).
   - _2-D_: Longest Common Subsequence (LCS) & Variants, 0/1 Knapsack & Variants, Edit Distance & String DP.
